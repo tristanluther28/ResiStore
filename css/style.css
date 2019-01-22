@@ -1,0 +1,304 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,500,700,300,100);
+
+html { 
+  height: 100%; 
+}
+
+body{  
+  margin: 0;
+  color: black;
+  background: #333;
+  background-size: contain;
+  font-family: "Roboto", helvetica, arial, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  text-rendering: optimizeLegibility;
+}
+
+.alter{
+  color: rgb(247, 115, 8) !important;
+}
+
+.glyphicon {
+	font-size: 80px;
+	color: #fff;
+}
+
+.btn-info {
+  color: #fff;
+  background-color:  rgb(247, 115, 8) !important;
+  border-color: rgb(247, 115, 8) !important;
+ }
+
+.index-text{
+  color: #fff;
+  font-size: 20px;
+}
+
+.notice-text{
+  color:#fff;
+  font-size: 20px;
+}
+
+hr{
+  color: rgb(247, 115, 8);
+  background-color: rgb(247, 115, 8);
+  border-color: rgb(247, 115, 8) !important;
+  border-top: 1px solid rgb(247, 115, 8) !important;
+}
+
+.dropdown-menu>li>a:hover {
+  color: #222;
+  text-decoration: none;
+  background-color: #f5f5f5;
+}
+
+.dropdown-menu>li>a {
+  color: #222;
+  text-decoration: none;
+}
+
+.button{
+  cursor: pointer;
+}
+
+.red{
+  color: red;
+}
+
+div.table-title {
+  display: block;
+  margin: auto;
+  text-align:center;
+}
+
+.table-title h3 {
+   color: black;
+   font-style: bold;
+   font-size: 30px;
+   font-weight: 400;
+   font-family: "Roboto", helvetica, arial, sans-serif;
+   text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.1);
+   text-transform:uppercase;
+}
+
+.navbar-fixed-bottom {
+  overflow: hidden;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: relative;
+  }
+
+.forgot-password{
+  font-size: 14px;
+  font-weight: 400;
+  float: right;
+}
+
+.responsiveCal{
+  position:relative;
+  padding-bottom:75%;
+  height:0;
+  overflow:hidden;
+}
+
+.responsiveCal iframe{
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+}
+
+.black{
+  color:black;
+}
+
+.label-warning {
+  background-color: red;
+}
+
+.btn-danger {
+  background-color: red;
+}
+
+.label-success {
+  background-color: green;
+}
+
+.error-msg{
+  color: red;
+}
+
+.pos-msg{
+  color: forestgreen;
+}
+
+.white{
+  color: white;
+}
+
+.green{
+  color: green;
+}
+
+.yellow{
+  color: #FFCC00 !important;
+}
+
+
+/*** Table Styles **/
+
+table {
+  padding-bottom: 30px;
+  margin-bottom:70px;
+}
+
+table.center {
+    margin-left:auto; 
+    margin-right:auto;
+}
+
+.table-fill {
+  background: white;
+  border-radius:3px;
+  border-collapse: collapse;
+  height: 320px;
+  margin: auto;
+  max-width: 600px;
+  padding:5px;
+  width: 100%;
+}
+ 
+.table-fill>.ani{
+  background: white;
+  border-radius:3px;
+  border-collapse: collapse;
+  height: 320px;
+  margin: auto;
+  max-width: 600px;
+  padding:5px;
+  width: 100%;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  animation: float 5s infinite;
+}
+
+.shift{
+  background: rgb(255, 102, 0) !important;
+}
+
+.shift-one{
+  background:  #FFCC00 !important;
+}
+
+.shift-two{
+  background: #E03B24 !important;
+}
+
+.shift-confirm{
+    background: green !important;
+}
+
+.store-gif {
+  position: relative;
+  top: 50px;
+  padding: 5px;
+  border-radius: 10px;
+} 
+
+.btn-special{
+  background: white;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  animation: float 5s infinite;
+}
+
+th {
+  color:#D5DDE5;
+  background:#222;
+  border-bottom:4px solid #9ea7af;
+  border-right: 1px solid #343a45;
+  font-size:23px;
+  font-weight: 100;
+  padding:24px;
+  text-align:left;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  vertical-align:middle;
+}
+
+th:first-child {
+  border-top-left-radius:3px;
+}
+ 
+th:last-child {
+  border-top-right-radius:3px;
+  border-right:none;
+}
+
+tr {
+  border-top: 1px solid #C1C3D1;
+  border-bottom: 1px solid #C1C3D1;
+  color:#666B85;
+  font-size:16px;
+  font-weight:normal;
+  text-shadow: 0 1px 1px rgba(256, 256, 256, 0.1);
+}
+ 
+tr:first-child {
+  border-top:none;
+}
+
+tr:last-child {
+  border-bottom:none;
+}
+ 
+tr:nth-child(odd) td {
+  background:#EBEBEB;
+}
+ 
+tr:last-child td:first-child {
+  border-bottom-left-radius:3px;
+}
+ 
+tr:last-child td:last-child {
+  border-bottom-right-radius:3px;
+}
+ 
+td {
+  background:#FFFFFF;
+  padding:20px;
+  text-align:left;
+  vertical-align:middle;
+  font-weight:300;
+  font-size:18px;
+  text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.1);
+  border-right: 1px solid #C1C3D1;
+}
+
+td:last-child {
+  border-right: 0px;
+}
+
+th.text-left {
+  text-align: left;
+}
+
+th.text-center {
+  text-align: center;
+}
+
+th.text-right {
+  text-align: right;
+}
+
+td.text-left {
+  text-align: left;
+}
+
+td.text-center {
+  text-align: center;
+}
+
+td.text-right {
+  text-align: right;
+}
