@@ -64,7 +64,7 @@
                     }
             ?>
         </ul>
-        <form class="navbar-form navbar-right form-group" action="../inventory/itemList.php" method="post">
+        <form class="navbar-form navbar-right form-group" action="../inventory/itemList.php" method="get">
             <label for="narrow" style="color:white;">Search by</label>
             <select name="narrow" id="narrow" class="form-control">
                 <option value="*">All</option>

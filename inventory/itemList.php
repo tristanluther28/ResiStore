@@ -21,9 +21,9 @@
                     $input_mod = "";
                     $narrow = "name";
                     $product = new Product();
-                    if(isset($_POST["bar"]) || isset($_POST["narrow"])){
-                        $input = $_POST['bar'];
-                        $narrow = $_POST['narrow'];
+                    if(isset($_GET["bar"]) || isset($_GET["narrow"])){
+                        $input = $_GET['bar'];
+                        $narrow = $_GET['narrow'];
                         $input_mod = $product->pural_check($input);
                     }
                     else{
