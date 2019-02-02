@@ -1,34 +1,33 @@
 <?php
     function __autoload($class){
-        require_once "/classes/$class.php";
+        require_once "./classes/$class.php";
     }
-    define ('SITE_ROOT', realpath(dirname(__FILE__)));
     session_start();
 ?>
 <html>
     <head>
         <?php
-            require_once "/support/head.php";
+            require_once "./support/head.php";
         ?>
     </head>
     <body>
         <?php
-            require_once "/support/nav.php";
+            require_once "./support/nav.php";
         ?>
         <div class="container pt">
             <div class="row mt centered">
                 <br><br><br>
                 <div class="col-md-6 col-md-offset-3 text-center">
                 <a name="avalibility"></a>   
-                    <img class="img-responsive-middle" src="/img/safe/logo-inverse.png" alt="ResiStore!">
+                    <img class="img-responsive-middle" src="./img/safe/logo-inverse.png" alt="ResiStore!">
                     <hr>
                     <h3 class="white">An electronics store powered by the</h3>
                     <a href="https://www.osurobotics.club/"><img class="img-responsive-middle" src="/img/safe/logo-osurc-inverse.png" alt="OSURC!"></a>
                     <div class="avalibility-banner1" id="closed">
                         <h3 class="white">The store is currently
                         <?php
-                        if (isset($_POST['lux'])){
-                            $lux = $_POST['lux'];
+                        if (isset($_GET['lux'])){
+                            $lux = $_GET['lux'];
                             if($lux == "1"){
                         ?>
                         <span class="label label-warning" id="store-status">Closed</span>
@@ -123,7 +122,7 @@
         </div>
         <br><br><br>
     <?php
-            require_once "/support/footer.php";
+            require_once "./support/footer.php";
     ?>
     </body>
 </html>
