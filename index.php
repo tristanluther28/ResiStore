@@ -1,3 +1,29 @@
+<script>
+//This script is legacy code from the old website
+function boolBanner() {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onload = function() {
+    var luxbool = xhttp.responseText;
+    if (luxbool == true) {
+      document.getElementById("store-status").innerText = "Open";
+      document.getElementById("store-status").className = "label label-info";
+    }
+    if (luxbool == false) {
+      document.getElementById("store-status").innerText = "Closed";
+      document.getElementById("store-status").className = "label label-warning";
+    }
+  };
+  xhttp.open("GET", "lux.bool", true);
+  xhttp.send();
+}
+
+function setUpTimer() {
+  window.setInterval(boolBanner, 1000);
+}
+document.addEventListener('DOMContentLoaded', setUpTimer);
+</script>
+
+
 <?php
     function __autoload($class){
         require_once "./classes/$class.php";
@@ -45,7 +71,7 @@
                         <?php
                         }
                         ?>
-                        <button type="button" class="btn btn-info" role="button" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="bottom" data-html="true" data-content="&lt;div&gt;This status is polled from a sensor in the store! This lets you know whether someone is in the store &lt;i&gt;right now.&lt;i&gt;&lt;div&gt;" data-original-title="" title="">ⓘ</button>
+                        <div type="" class="btn btn-info" role="button" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="bottom" data-html="true" data-content="&lt;div&gt;This status is polled from a sensor in the store! This lets you know whether someone is in the store &lt;i&gt;right now.&lt;i&gt;&lt;div&gt;" data-original-title="" title="">ⓘ</div>
                         </h3>
                         <script>
                             $(document).ready(function(){

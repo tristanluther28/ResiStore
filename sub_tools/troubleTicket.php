@@ -57,7 +57,7 @@
                     /*
                         Do not uncomment to test until on a hosting platform. Will cause failure.
                     */
-                    //mail($man_email, "ResiStore Trouble Ticket", "$body", "From: tristanluther28@gmail.com\r\n"); //Change email sender when made
+                    mail($man_email, "ResiStore Trouble Ticket [OSURCStore]", "$body", "From: tristanluther28@gmail.com\r\n"); //Change email sender when made
                 }
                 else{
                     echo "Error: Manager email not found in system";
