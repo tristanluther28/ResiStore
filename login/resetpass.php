@@ -12,31 +12,28 @@
     </head>
     <body>
         <?php
+            $employee = new Employee();
             if(isset($_GET["email"]) && isset($_GET["sp"])){
                 require_once "../support/nav.php";
-                $employee = new Employee();
                 $email = $employee->escape($_GET['email']);
                 $sp = $employee->escape($_GET['sp']);
+                $_SESSION['result'] = $employee->get_from_emandsp($email, $sp);
+            }
+            if(isset($_POST['submit'])){
                 $password = $employee->escape($_POST['password']);
                 $confirm_password = $employee->escape($_POST['confirm_password']);
-                $result = $employee->get_from_emandsp($email, $sp);
-                if($result->rowCount() > 0){
-                    if($password != $confirm_password){
-                        echo  "Error: passwords do not match";
-                    }
-                    else{
-                        $hash = password_hash($password, PASSWORD_BCRYPT);
-                        $employee->update_pass($email, $hash);
-                    }
+                if($password != $confirm_password){
+                    $msg = "Error: passwords do not match";
                 }
                 else{
-                    echo "Error: password link integrity failed";
+                    //Update the password
+                    $id = $_SESSION['result'];
+                    $hash = password_hash($password, PASSWORD_BCRYPT);
+                    $employee->update_pass($id, $hash);
+                    header("Location: index.php");
+                    exit();
                 }
-            }
-            else{
-                header("Location: login.php");
-                exit();
-            }
+            } 
         ?>
         <div class="container pt">
             <div class="row mt centered">
@@ -56,6 +53,9 @@
                             <label class="white">Confirm New Password</label>
                             <input type="password" minLength="5" name="confirm_password" class="form-control">
                             <span class="help-block"></span>
+                        </div>
+                        <div class="form-group">
+                            <input name ="submit" type="submit" class="btn btn-info" value="Submit">
                         </div>
                     </form>
                 </div>

@@ -2,18 +2,20 @@
 //This script is legacy code from the old website
 function boolBanner() {
     var xhttp = new XMLHttpRequest();
-    xhttp.onload = function() {
-    var luxbool = xhttp.responseText;
-    if (luxbool == true) {
-      document.getElementById("store-status").innerText = "Open";
-      document.getElementById("store-status").className = "label label-info";
-    }
-    if (luxbool == false) {
-      document.getElementById("store-status").innerText = "Closed";
-      document.getElementById("store-status").className = "label label-warning";
+    xhttp.open("GET", "lux.bool", true);
+    xhttp.onreadystatechange = function() {
+    var luxbool = this.responseText;
+    if(this.readyState == 4 && this.status == 200){
+        if (luxbool == true) {
+        document.getElementById("store-status").innerText = "Open";
+        document.getElementById("store-status").className = "label label-success";
+        }
+        else if (luxbool == false) {
+        document.getElementById("store-status").innerText = "Closed";
+        document.getElementById("store-status").className = "label label-warning";
+        }
     }
   };
-  xhttp.open("GET", "lux.bool", true);
   xhttp.send();
 }
 
@@ -52,25 +54,10 @@ document.addEventListener('DOMContentLoaded', setUpTimer);
                     <div class="avalibility-banner1" id="closed">
                         <h3 class="white">The store is currently
                         <?php
-                        if (isset($_GET['lux'])){
-                            $lux = $_GET['lux'];
-                            if($lux == "1"){
+
                         ?>
-                        <span class="label label-warning" id="store-status">Closed</span>
-                        <?php
-                            }
-                            else{
-                        ?>
-                        <span class="label label-success" id="store-status">Open</span>
-                        <?php
-                            }
-                        }
-                        else{
-                        ?>
-                        <span class="label label-default" id="store-status">No Connection</span>
-                        <?php
-                        }
-                        ?>
+                        <span class="label label-default" id="store-status">Loading...</span>
+                        
                         <div type="" class="btn btn-info" role="button" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="bottom" data-html="true" data-content="&lt;div&gt;This status is polled from a sensor in the store! This lets you know whether someone is in the store &lt;i&gt;right now.&lt;i&gt;&lt;div&gt;" data-original-title="" title="">ⓘ</div>
                         </h3>
                         <script>

@@ -19,7 +19,7 @@
                 <br><br>
                 <h1 class="alter text-center">404 Error: Page Not Found</h1>
                 <br>
-                <img class="img-responsive" src="./img/safe/doge.jpg" alt="404">
+                <img class="img-responsive" src="/img/safe/doge.jpg" alt="404">
                 <br>
                 <h1 class="alter text-center">Sorry we couldn't find that page</h1>
             </div>

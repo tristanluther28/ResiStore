@@ -90,6 +90,11 @@ div.table-title {
   display: relative;
   }
 
+.msg-box>h2{
+  padding: 15px;
+  color: #FFFFFF;
+}
+
 .forgot-password{
   font-size: 14px;
   font-weight: 400;

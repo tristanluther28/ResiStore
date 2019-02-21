@@ -39,11 +39,20 @@ class Employee extends Db {
     public function get_from_emandsp($email, $sp){
         $sql = "SELECT id FROM employees WHERE email='$email' AND sp='$sp'";
         $result = $this->connect()->query($sql);
-        return $result;
+        if($result->rowCount() > 0){
+            while($row = $result->fetch()){
+                $data[] = $row;
+            }
+            return $data[0][0];
+        }
     }
     //Update an employee password
-    public function update_pass($email, $hash){
-        $sql = "UPDATE employees SET password='$hash', sp='' WHERE email='$email'";
+    public function update_pass($id, $hash){
+        $sql = "UPDATE employees SET password='$hash', sp=NULL WHERE id='$id'";
+        $this->connect()->query($sql);
+    }
+    public function update_test($id){
+        $sql = "UPDATE employees SET rfid='420' WHERE id='$id'";
         $this->connect()->query($sql);
     }
     //Update an employee hours

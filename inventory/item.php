@@ -44,7 +44,7 @@
                     ?>
                     <br>
                     <a href="<?php echo '../datasheets/'.$row['datasheet'];?>" target="_blank"><button type="button" class="btn btn-info btn-lg">View Datasheet</button></a>
-                    <br><br>
+                    <br><br><br><br>
                 </div>
             </div>
         </div>

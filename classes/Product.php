@@ -26,24 +26,22 @@ class Product extends Db {
         WHERE description LIKE '%$input%' OR category LIKE '%$input%' OR price LIKE '%$input%' 
         OR plu LIKE '%$input%'";
         $result = $this->connect()->query($sql); //Look for result of entire term
-        if($result->rowCount() > 0){
-            while($row = $result->fetch()){
-                $data[] = $row;
-            }
+        while($row = $result->fetch()){
+            $data[] = $row;
         }
         $sep_input = explode(" ", $input);
         foreach($sep_input as $piece){
             $sql = "SELECT id, plu, description, qty, price, category, picture, datasheet FROM products
             WHERE description LIKE '%$piece%' OR category LIKE '%$piece%'";
             $result = $this->connect()->query($sql); //Then look for individual terms results
+            while($row = $result->fetch()){
+                $data[] = $row;
+            }
             if($result->rowCount() > 0){
-                while($row = $result->fetch()){
-                    $data[] = $row;
-                }
+                $data = array_intersect_key($data, array_unique(array_map('serialize', $data))); //Remove Duplicate Values in the Array
+                return $data;
             }
         }
-        $data = array_intersect_key($data, array_unique(array_map('serialize', $data))); //Remove Duplicate Values in the Array
-        return $data;
     }
     //Get from id
     public function search_id($input){
@@ -63,10 +61,8 @@ class Product extends Db {
         $sql = "SELECT id, plu, description, qty, price, category, picture, datasheet FROM products
         WHERE description LIKE '%$input%' OR category LIKE '%$input%'";
         $result = $this->connect()->query($sql); //Look for entire term results 
-        if($result->rowCount() > 0){
-            while($row = $result->fetch()){
-                $data[] = $row;
-            }
+        while($row = $result->fetch()){
+            $data[] = $row;
         }
         $sep_input = explode(" ", $input);
         foreach($sep_input as $piece){
@@ -79,8 +75,10 @@ class Product extends Db {
                 }
             }
         }
-        $data = array_intersect_key($data, array_unique(array_map('serialize', $data))); //Remove Duplicate Values in the Array
-        return $data;
+        if($result->rowCount() > 0){
+            $data = array_intersect_key($data, array_unique(array_map('serialize', $data))); //Remove Duplicate Values in the Array
+            return $data;
+        }
     }
     //Get from PLU!
     public function search_plu($input){
