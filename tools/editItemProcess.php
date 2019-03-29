@@ -24,7 +24,7 @@
                     $rows = $product->search_id($id);
                     $row = $rows[0];
                     $plu = $product->escape($_POST['plu']);
-                    $description = $product->escape($_POST['description']);
+                    $description = $product->escape(htmlspecialchars($_POST['description']));
                     $qty = $product->escape($_POST['qty']);
                     $price = $product->escape($_POST['price']);
                     $category = $product->escape($_POST['category']);

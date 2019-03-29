@@ -3,6 +3,13 @@
         require_once "../classes/$class.php";
     }
     session_start();
+
+    use PHPMailer\PHPMailer\PHPMailer;
+    use PHPMailer\PHPMailer\Exception;
+
+    require '../phpmailer/src/Exception.php';
+    require '../phpmailer/src/PHPMailer.php';
+    require '../phpmailer/src/SMTP.php';
 ?>
 <html>
     <head>
@@ -15,24 +22,40 @@
             require_once "../support/nav.php";
         ?>
         <?php
+            $msg = "";
             if(isset($_POST['submit'])){
                 $employee = new Employee();
+                $mail = New PHPMailer();
+                $mail->Host = "smtp.gmail.com";
+                $mail->isSMTP();
+                $mail->SMTPAuth = true;
+                $mail->Username = "resiStore.bot@gmail.com";
+                $mail->Password = "StoresRock";
+                $mail->SMTPSecure = "ssl"; //Can also be TLS
+                $mail->Port = 465; //587 if TLS
+                $mail->Subject = "ResiStore Password Reset";
+                
                 $email = $employee->escape($_POST['email']);
                 $result = $employee->get_from_email($email);
                 if($result->rowCount() > 0){
                     $str = "qpownfgsaifr84h2f9hb331gGGFH8gbfHGDGTRGdUYfytrdytrYTF";
                     $str = str_shuffle($str);
                     $str = substr($str, 0, 10);
-                    $url = "localhost/php/resetpass.php?sp=$str&email=$email"; //MUST CHANGE WHEN A DOMAIN IS ESTABLISHED
-                    /*
-                        Do not uncomment to test until on a hosting platform. Will cause failure.
-                    */
-                    //mail($email, "ResiStore Password Reset", "To reset your ResiStore password, follow this link: $url", "From: tristanluther28@gmail.com\r\n"); //Change email sender when made
+                    $url = "http://localhost/login/resetpass.php?sp=$str&email=$email"; //MUST CHANGE WHEN A DOMAIN IS ESTABLISHED
+                    $mail->Body = "\nTo reset your ResiStore password, follow this link: $url";
+                    $mail->setFrom('resiStore.bot@gmail.com', 'ResiStore Bot');
+                    $mail->addAddress($email);
+                    //Send the email
+                    if($mail->send()){
+                        $msg = "Please check your email!";
+                    }
+                    else{
+                        $msg = "Not sent, please contact store manager!";
+                    }
                     $employee->sp_set($str, $email);
-                    echo "Please check your email";
                 }
                 else{
-                    echo "This email was not found";
+                    $msg = "This email was not found";
                 }
             }
         ?>
@@ -53,6 +76,13 @@
                             <input name ="submit" type="submit" class="btn btn-info" value="Submit">
                         </div>
                     </form>
+                    <div class="msg-box">
+                            <h2 class="white">
+                            <?php
+                                echo $msg;
+                            ?>
+                            </h2>
+                        </div>
                 </div>
             </div>
         </div>

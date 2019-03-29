@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', setUpTimer);
                     <img class="img-responsive-middle" src="./img/safe/logo-inverse.png" alt="ResiStore!">
                     <hr>
                     <h3 class="white">An electronics store powered by the</h3>
-                    <a href="https://www.osurobotics.club/"><img class="img-responsive-middle" src="/img/safe/logo-osurc-inverse.png" alt="OSURC!"></a>
+                    <a href="https://www.osurobotics.club/"><img class="img-responsive-middle" height="101" width="300" src="/img/safe/logo-osurc-inverse.png" alt="OSURC!"></a>
                     <div class="avalibility-banner1" id="closed">
                         <h3 class="white">The store is currently
                         <?php

@@ -1,8 +1,15 @@
 <?php
-    function __autoload($class){
-        require_once "../classes/$class.php";
-    }
     session_start();
+    include_once('../classes/Db.php');
+    include_once('../classes/Product.php');
+    include_once('../classes/Employee.php');
+    
+    use PHPMailer\PHPMailer\PHPMailer;
+    use PHPMailer\PHPMailer\Exception;
+
+    require '../phpmailer/src/Exception.php';
+    require '../phpmailer/src/PHPMailer.php';
+    require '../phpmailer/src/SMTP.php';
 ?>
 <html>
     <head>
@@ -12,6 +19,7 @@
     </head>
     <body>
         <?php
+            $msg = "";
             if(isset($_SESSION['id'])){
                 require_once "../support/nav.php";
             }
@@ -21,7 +29,23 @@
             }
             if(isset($_POST['submit'])){
                 //Send the email
+                $mail = New PHPMailer();
                 $employee = New Employee();
+                //Set a host for mailer
+                $mail->Host = "smtp.gmail.com";
+                //Enable SMTP (Simple Mail Transfer Protocal) Might not be needed, depends on platform
+                $mail->isSMTP();
+                //Set Mailer Authentication
+                $mail->SMTPAuth = true;
+                //Set the email being used to send the email
+                $mail->Username = "resiStore.bot@gmail.com";
+                $mail->Password = "StoresRock";
+                //Set type of protection
+                $mail->SMTPSecure = "ssl"; //TLS is also an option
+                //Set Port
+                $mail->Port = 465; //587 if TLS
+                //Set the subject
+                $mail->Subject = "ResiStore Trouble Ticket [OSURCStore]";
                 $rows = $employee->select();
                 $problem = "";
                 if($rows != NULL){
@@ -33,7 +57,7 @@
                         }
                         else if($_SESSION['id'] == $row['id']){
                             //Get the user's name for the email
-                            $user_name = $row['name'];
+                            $user_name = $row['firstName']." ".$row['lastName'];
                         }
                     }
                 }
@@ -52,15 +76,19 @@
                 $plu = $_POST['plu'];
                 $class = $_POST['class'];
                 $info = $_POST['info'];
-                $body = "Item PLU: $plu \r\nProblem: $problem \r\n Is the item needed for a class?: $class \r\nMore Info: $info\r\n Submitted by: $user_name";
-                if($man_email != NULL){
-                    /*
-                        Do not uncomment to test until on a hosting platform. Will cause failure.
-                    */
-                    mail($man_email, "ResiStore Trouble Ticket [OSURCStore]", "$body", "From: tristanluther28@gmail.com\r\n"); //Change email sender when made
+                $body = "Item PLU: $plu \r\nProblem: $problem \r\n\nIs the item needed for a class?: $class \r\n\nMore Info: $info\r\n\nSubmitted by: $user_name";
+                //Set the body of the email
+                $mail->Body = $body;
+                //Set who the email is from
+                $mail->setFrom('resiStore.bot@gmail.com', 'ResiStore Bot');
+                //Set where we are sending the email
+                $mail->addAddress($man_email);
+                //Send the email
+                if($mail->send()){
+                    $msg = "Ticket has been submitted!";
                 }
                 else{
-                    echo "Error: Manager email not found in system";
+                    $msg = "Ticket not submitted, please contact manager!";
                 }
             }
         ?>
@@ -103,6 +131,13 @@
                                 <input name ="reset" type="reset" class="btn btn-default" value="Reset">
                             </div>
                         </form>
+                        <div class="msg-box">
+                            <h2 class="white">
+                            <?php
+                                echo $msg;
+                            ?>
+                            </h2>
+                        </div>
                     <?php
                         }
                         else{
