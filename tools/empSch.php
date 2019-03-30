@@ -95,21 +95,20 @@
                                 <td class='text-left'><?php echo $i-3?>:00PM - <?php echo $i-2?>:00PM</td>
                             <?php
                                 }
-                            ?>
-                                <td></td>         
+                            ?>        
                             <?php
-                                for($j = 0; $j < 5; $j++){
+                                for($j = 1; $j < 8; $j++){
                                     foreach($rows_all as $row_all){
                                         $block_array_all = explode(",",$row_all['blocks']);
                                         $block_array = explode(",",$row['blocks']);
                                         for($k = 0; $k < sizeof($block_array_all); $k++){
                                     //Conditional: if a worker has that shift
                                             for($l = 0; $l < sizeof($block_array); $l++){
-                                                if((5*$i+$j)==$block_array[$l]){
+                                                if((7*$i+$j)==$block_array[$l]){
                                                     $flag = 1;
                                                     break 2;
                                                 }
-                                                else if((5*$i+$j)==$block_array_all[$k] && (5*$i+$j)!=$block_array[$l]){
+                                                else if((7*$i+$j)==$block_array_all[$k] && (7*$i+$j)!=$block_array[$l]){
                                                     $count++;
                                                     $flag = 0;
                                                     break 2;
@@ -120,7 +119,7 @@
                                         if($flag){
                                         ?>
                                             <td class="shift-confirm">
-                                                <input type="checkbox" name="blocks[]" class="form-control" value="<?php echo 5*$i + $j; ?>" checked>
+                                                <input type="checkbox" name="blocks[]" class="form-control" value="<?php echo 7*$i + $j; ?>" checked>
                                             </td>
                                         <?php
                                             $flag = 0;
@@ -139,20 +138,19 @@
                                             else if($count == 1){
                                             ?>
                                                     <td class="shift-one">
-                                                        <input type="checkbox" name="blocks[]" class="form-control" value="<?php echo 5*$i + $j; ?>"></td>
+                                                        <input type="checkbox" name="blocks[]" class="form-control" value="<?php echo 7*$i + $j; ?>"></td>
                                             <?php
                                                 $count = 0;
                                                 $flag = 0;
                                             }
                                             else{
                                                 ?>
-                                                    <td><input type="checkbox" name="blocks[]" class="form-control" value="<?php echo 5*$i + $j; ?>"></td>
+                                                    <td><input type="checkbox" name="blocks[]" class="form-control" value="<?php echo 7*$i + $j; ?>"></td>
                                                 <?php  
                                             }
                                         }
                                 }
                             ?>
-                                <td></td>
                             </tr>
                             <?php
                                 }

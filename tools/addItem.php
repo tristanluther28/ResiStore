@@ -49,6 +49,14 @@
                         <input type="text" name="category" value="" style="width: 500px" class="form-control" required>
                     </div>
                     <div class="form-group">
+                        <label class="white">Box (blank if N/A): </label>
+                        <input type="text" name="box" value="" style="width: 500px" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label class="white">Location: </label>
+                        <input type="text" name="location" value="" style="width: 500px" class="form-control" required>
+                    </div>
+                    <div class="form-group">
                         <label class="white">Picture: </label>
                         <input type="file" name="picToUpload" id="picToUpload" required>
                     </div>

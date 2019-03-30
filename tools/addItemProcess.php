@@ -24,6 +24,8 @@
                 $qty = $product->escape($_POST['qty']);
                 $price = $product->escape($_POST['price']);
                 $category = $product->escape($_POST['category']);
+                $box = $product->escape($_POST['box']);
+                $location = $product->escape($_POST['location']);
                 $picture = $product->escape($_FILES['picToUpload']['name']);
                 $datasheet = $product->escape($_FILES['dataToUpload']['name']);;
                 if (isset($_FILES['picToUpload']['name']) && $_FILES["picToUpload"]["size"] > 0){
@@ -117,7 +119,7 @@
                 else{
                     echo "You must add a datasheet";
                 }
-                $product->add($plu, $description, $qty, $price, $category, $picture, $datasheet);
+                $product->add($plu, $description, $qty, $price, $category, $picture, $datasheet, $box, $location);
                 /*
                 Now that the item has been succesfully uploaded, a file check will be conducted to make sure any files that are
                 not being used by the database are removed. This will prevent a build-up of unused files on the server 

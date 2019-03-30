@@ -164,15 +164,14 @@
                                                 <td class='text-left'><?php echo $i-3?>:00PM - <?php echo $i-2?>:00PM</td>
                                             <?php
                                                 }
-                                            ?>
-                                                <td></td>         
+                                            ?>         
                                             <?php
-                                                for($j = 0; $j < 5; $j++){
+                                                for($j = 1; $j < 8; $j++){
                                                     foreach($rows as $row){
                                                         $block_array = explode(",",$row['blocks']);
                                                         for($k = 0; $k < sizeof($block_array); $k++){
                                                     //Conditional: if a worker has that shift
-                                                            if((5*$i+$j)==$block_array[$k]){
+                                                            if((7*$i+$j)==$block_array[$k]){
                                                                 $count++;
                                                                 break;
                                                             }
@@ -189,18 +188,18 @@
                                                     else if($count == 1){
                                                         ?>
                                                 <td class="shift-one">
-                                                    <input type="checkbox" name="blocks[]" class="form-control" value="<?php echo 5*$i + $j; ?>"></td>
+                                                    <input type="checkbox" name="blocks[]" class="form-control" value="<?php echo 7*$i + $j; ?>">
+                                                </td>
                                                         <?php
                                                                     $count = 0;
                                                     }
                                                     else{
                                             ?>
-                                                <td><input type="checkbox" name="blocks[]" class="form-control" value="<?php echo 5*$i + $j; ?>"></td>
+                                                <td><input type="checkbox" name="blocks[]" class="form-control" value="<?php echo 7*$i + $j; ?>"></td>
                                             <?php  
                                                     }
                                                 }
                                             ?>
-                                                <td></td>
                                             </tr>
                                             <?php
                                                 }

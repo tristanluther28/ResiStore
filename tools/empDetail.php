@@ -92,14 +92,13 @@
                             <td class='text-left'><?php echo $i-3?>:00PM - <?php echo $i-2?>:00PM</td>
                         <?php
                             }
-                        ?>
-                            <td></td>         
+                        ?>         
                         <?php
-                            for($j = 0; $j < 5; $j++){
+                            for($j = 1; $j < 8; $j++){
                                     $block_array = explode(",",$row['blocks']);
                                     for($k = 0; $k < sizeof($block_array); $k++){
                                 //Conditional: if a worker has that shift
-                                        if((5*$i+$j)==$block_array[$k]){
+                                        if((7*$i+$j)==$block_array[$k]){
                                             $flag = 1;
                                             break;
                                         }
@@ -117,7 +116,6 @@
                                 }
                             }
                         ?>
-                            <td></td>
                         </tr>
                         <?php
                             }

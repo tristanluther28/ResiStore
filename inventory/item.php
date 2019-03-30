@@ -38,13 +38,23 @@
                     ?>
                             <p class="strong white">In Stock</p>
                             <i class="white"><?php echo $row['qty']?> Avaliable</i>
-                            <br>
+                            <br><br>
+                    <?php
+                        }
+                        if(isset($_SESSION['id'])){
+                            if($row['box'] != NULL){
+                    ?>
+                        <p class="white">Box: <?php echo $row['box']?></p>
+                    <?php
+                            }
+                    ?>
+                        <p class="white">Location: <?php echo $row['location']?></p>
                     <?php
                         }
                     ?>
                     <br>
                     <a href="<?php echo '../datasheets/'.$row['datasheet'];?>" target="_blank"><button type="button" class="btn btn-info btn-lg">View Datasheet</button></a>
-                    <br><br><br><br>
+                    <br><br><br><br><br>
                 </div>
             </div>
         </div>

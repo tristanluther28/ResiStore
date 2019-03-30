@@ -28,6 +28,8 @@
                     $qty = $product->escape($_POST['qty']);
                     $price = $product->escape($_POST['price']);
                     $category = $product->escape($_POST['category']);
+                    $box = $product->escape($_POST['box']);
+                    $location = $product->escape($_POST['location']);
                     $picture = $row['picture'];
                     $datasheet = $row['datasheet'];
                     if (isset($_FILES['picToUpload']['name']) && $_FILES["picToUpload"]["size"] > 0){
@@ -121,7 +123,7 @@
                     else{
                         $datasheet = $row['datasheet'];
                     }
-                    $product->update($id, $plu, $description, $qty, $price, $category, $picture, $datasheet);
+                    $product->update($id, $plu, $description, $qty, $price, $category, $picture, $datasheet, $box, $location);
                     header("Location: manageprod.php");
                     exit();
                 }

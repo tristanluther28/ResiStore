@@ -1,13 +1,3 @@
-<script>
-/*function hideMobileMenu() {
-  var x = document.getElementById("mobile-menu");
-  if (x.style.display === "block") {
-    x.style.display = "none";
-  } else {
-    x.style.display = "block";
-  }
-}*/
-</script>
 <nav class="navbar navbar-inverse">
     <div class="container-fluid">
         <div class="desktop-nav">

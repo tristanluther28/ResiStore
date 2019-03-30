@@ -53,6 +53,14 @@
                         <input type="text" name="category" value="<?php echo $row['category'] ?>" style="width: 500px" class="form-control" required>
                     </div>
                     <div class="form-group">
+                        <label class="white">Box (if applicable): </label>
+                        <input type="text" name="box" value="<?php echo $row['box'] ?>" style="width: 500px" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label class="white">Location: </label>
+                        <input type="text" name="location" value="<?php echo $row['location'] ?>" style="width: 500px" class="form-control" required>
+                    </div>
+                    <div class="form-group">
                         <label class="white">Picture: </label>
                         <p class="white">Currently: <?php echo $row['picture'] ?></p>
                         <input type="file" name="picToUpload" id="picToUpload">

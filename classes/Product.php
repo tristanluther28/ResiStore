@@ -22,7 +22,7 @@ class Product extends Db {
     //Get it all!
     public function search_all($input){
         $input = $this->escape($input);
-        $sql = "SELECT id, plu, description, qty, price, category, picture, datasheet FROM products
+        $sql = "SELECT id, plu, description, qty, price, category, picture, datasheet, box, location FROM products
         WHERE description LIKE '%$input%' OR category LIKE '%$input%' OR price LIKE '%$input%' 
         OR plu LIKE '%$input%'";
         $result = $this->connect()->query($sql); //Look for result of entire term
@@ -31,7 +31,7 @@ class Product extends Db {
         }
         $sep_input = explode(" ", $input);
         foreach($sep_input as $piece){
-            $sql = "SELECT id, plu, description, qty, price, category, picture, datasheet FROM products
+            $sql = "SELECT id, plu, description, qty, price, category, picture, datasheet, box, location FROM products
             WHERE description LIKE '%$piece%' OR category LIKE '%$piece%'";
             $result = $this->connect()->query($sql); //Then look for individual terms results
             while($row = $result->fetch()){
@@ -58,7 +58,7 @@ class Product extends Db {
     //Get it from name!
     public function search_name($input){
         $input = $this->escape($input);
-        $sql = "SELECT id, plu, description, qty, price, category, picture, datasheet FROM products
+        $sql = "SELECT id, plu, description, qty, price, category, picture, datasheet, box, location FROM products
         WHERE description LIKE '%$input%' OR category LIKE '%$input%'";
         $result = $this->connect()->query($sql); //Look for entire term results 
         while($row = $result->fetch()){
@@ -66,7 +66,7 @@ class Product extends Db {
         }
         $sep_input = explode(" ", $input);
         foreach($sep_input as $piece){
-            $sql = "SELECT id, plu, description, qty, price, category, picture, datasheet FROM products
+            $sql = "SELECT id, plu, description, qty, price, category, picture, datasheet, box, location FROM products
             WHERE description LIKE '%$piece%' OR category LIKE '%$piece%'";
             $result = $this->connect()->query($sql); //Then look for individual terms results
             if($result->rowCount() > 0){
@@ -83,7 +83,7 @@ class Product extends Db {
     //Get from PLU!
     public function search_plu($input){
         $input = $this->escape($input);
-        $sql = "SELECT id, plu, description, qty, price, category, picture, datasheet FROM products
+        $sql = "SELECT id, plu, description, qty, price, category, picture, datasheet, box, location FROM products
         WHERE plu LIKE '%$input%'";
         $result = $this->connect()->query($sql);
         if($result->rowCount() > 0){
@@ -96,7 +96,7 @@ class Product extends Db {
     //Get from price!
     public function search_price($input){
         $input = $this->escape($input);
-        $sql = "SELECT id, plu, description, qty, price, category, picture, datasheet FROM products
+        $sql = "SELECT id, plu, description, qty, price, category, picture, datasheet, box, location FROM products
         WHERE price LIKE '%$input%'";
         $result = $this->connect()->query($sql);
         if($result->rowCount() > 0){
@@ -151,9 +151,9 @@ class Product extends Db {
         }
     }
     //Update a product
-    public function update($id, $plu, $description, $qty, $price, $category, $picture, $datasheet){
+    public function update($id, $plu, $description, $qty, $price, $category, $picture, $datasheet, $box, $location){
         $sql = "UPDATE products SET plu='$plu', description='$description', qty='$qty', 
-        price='$price', category='$category', picture='$picture', datasheet='$datasheet' 
+        price='$price', category='$category', picture='$picture', datasheet='$datasheet', box='$box', location='$location' 
         WHERE id='$id'"; 
         $this->connect()->query($sql);
     }
@@ -168,10 +168,10 @@ class Product extends Db {
         $this->connect()->query($sql);
     }
     //Add New Item
-    public function add($plu, $description, $qty, $price, $category, $picture, $datasheet){
+    public function add($plu, $description, $qty, $price, $category, $picture, $datasheet, $box, $location){
         $sold = 0;
-        $sql = "INSERT INTO products (plu, description, qty, price, category, picture, datasheet, sold)
-        VALUES ('$plu', '$description', '$qty', '$price', '$category', '$picture', '$datasheet', '$sold')";
+        $sql = "INSERT INTO products (plu, description, qty, price, category, picture, datasheet, sold, box, location)
+        VALUES ('$plu', '$description', '$qty', '$price', '$category', '$picture', '$datasheet', '$sold', '$box', '$location')";
         $this->connect()->query($sql);
     }
     //Change from pural to singular
