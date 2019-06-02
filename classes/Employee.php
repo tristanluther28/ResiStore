@@ -8,8 +8,8 @@ class Employee extends Db {
         return str_replace($search, $replace, $value);
     }
     //Insert a new employee's data
-    public function insert_data($firstName, $lastName, $email, $hash, $rfid, $blocks){
-        $sql = "INSERT INTO employees (firstName, lastName, email, password, rfid, blocks) VALUES ('$firstName', '$lastName', '$email', '$hash', '$rfid', '$blocks')";
+    public function insert_data($firstName, $lastName, $osuid, $email, $hash, $rfid, $blocks){
+        $sql = "INSERT INTO employees (firstName, lastName, email, password, rfid, blocks, osu_id, store_access) VALUES ('$firstName', '$lastName', '$email', '$hash', '$rfid', '$blocks', '$osuid', 1)";
         $this->connect()->query($sql);
     }
     //Check if login info is correct

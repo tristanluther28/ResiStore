@@ -28,6 +28,7 @@
                     $employee = new Employee();
                     $firstName = $employee->escape($_POST['firstName']);
                     $lastName = $employee->escape($_POST['lastName']);
+                    $osuid = $employee->escape($_POST['osuid']);
                     $email = $employee->escape($_POST['email']);
                     $password = $employee->escape($_POST['password']);
                     $confirm_password = $employee->escape($_POST['confirm_password']);
@@ -38,7 +39,7 @@
                     }
                     else{
                         $hash = password_hash($password, PASSWORD_BCRYPT);
-                        $employee->insert_data($firstName, $lastName, $email, $hash, $rfid, $blocks);
+                        $employee->insert_data($firstName, $lastName, $osuid, $email, $hash, $rfid, $blocks);
                         $pos_msg = "You have been registered!";
                         exit();
                     }
@@ -93,6 +94,11 @@
                         <div class="form-group">
                             <label class="white">Last Name</label>
                             <input type="text" name="lastName" class="form-control" required>
+                            <span class="help-block"></span>
+                        </div>
+                        <div class="form-group">
+                            <label class="white">OSU ID Number</label>
+                            <input type="text" name="osuid" class="form-control" required>
                             <span class="help-block"></span>
                         </div>
                         <div class="form-group">

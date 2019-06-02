@@ -19,6 +19,7 @@
                     $employee = new Employee();
                     $firstName = $employee->escape($_POST['firstName']);
                     $lastName = $employee->escape($_POST['lastName']);
+                    $osuid = $employee->escape($_POST['osuid']);
                     $email = $employee->escape($_POST['email']);
                     $password = $employee->escape($_POST['password']);
                     $confirm_password = $employee->escape($_POST['confirm_password']);
@@ -29,7 +30,7 @@
                     }
                     else{
                         $hash = password_hash($password, PASSWORD_BCRYPT);
-                        $employee->insert_data($firstName, $lastName, $email, $hash, $rfid, $blocks);
+                        $employee->insert_data($firstName, $lastName, $osuid, $email, $hash, $rfid, $blocks);
                         $pos_msg = "You have been registered!";
                         header("Location: index.php");
                         exit();

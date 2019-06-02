@@ -31,7 +31,7 @@
             //Check if this person has permissions
             if($row['store_access'] == 1){
                 //JSON data follows the following template: exists in database, first name, last name, has access
-                $data = array('known' => 'True', 'first' => $row['firstName'], 'last' => $row['lastName'], 'has_auth' => 'True');
+                $data = array('known' => 'True', 'first' => $row['firstName'], 'last' => $row['lastName'], 'has_auth' => true);
                 echo (json_encode($data));
                 return json_encode($data);
 
@@ -40,17 +40,16 @@
             else{
                 //Unauthorized User: Access Denied
                 //JSON data follows the following template: exists in database, first name, last name, has access
-                $data = array('known' => 'True', 'first' => $row['firstName'], 'last' => $row['lastName'], 'has_auth' => 'False');
+                $data = array('known' => 'True', 'first' => $row['firstName'], 'last' => $row['lastName'], 'has_auth' => false);
                 echo (json_encode($data));
                 return json_encode($data);
             }
         }
         //If returned value is NULL then user is not in database
         else{
-            echo 'yo';
             //Unauthorized User: Access Denied
             //JSON data follows the following template: exists in database, first name, last name, has access
-            $data = array('known' => 'False', 'first' => $row['firstName'], 'last' => $row['lastName'], 'has_auth' => 'False');
+            $data = array('known' => 'False', 'first' => $row['firstName'], 'last' => $row['lastName'], 'has_auth' => false);
             echo (json_encode($data));
             return json_encode($data);
         } 
@@ -63,7 +62,7 @@
             //Check if this person has permissions
             if($row['clab_access'] == "1"){
                 //JSON data follows the following template: exists in database, first name, last name, has access
-                $data = array('known' => 'True', 'first' => $row['firstName'], 'last' => $row['lastName'], 'has_auth' => 'True');
+                $data = array('known' => 'True', 'first' => $row['firstName'], 'last' => $row['lastName'], 'has_auth' => true);
                 echo (json_encode($data));
                 return json_encode($data);
 
@@ -72,7 +71,7 @@
             else{
                 //Unauthorized User: Access Denied
                 //JSON data follows the following template: exists in database, first name, last name, has access
-                $data = array('known' => 'True', 'first' => $row['firstName'], 'last' => $row['lastName'], 'has_auth' => 'False');
+                $data = array('known' => 'True', 'first' => $row['firstName'], 'last' => $row['lastName'], 'has_auth' => false);
                 echo (json_encode($data));
                 return json_encode($data);
             }
@@ -81,7 +80,7 @@
         else{
             //Unauthorized User: Access Denied
             //JSON data follows the following template: exists in database, first name, last name, has access
-            $data = array('known' => 'False', 'first' => $row['firstName'], 'last' => $row['lastName'], 'has_auth' => 'False');
+            $data = array('known' => 'False', 'first' => $row['firstName'], 'last' => $row['lastName'], 'has_auth' => false);
             echo (json_encode($data));
             return json_encode($data);
         } 

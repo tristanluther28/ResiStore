@@ -1,6 +1,6 @@
 <meta charset="utf-8" />
 <title>ResiSTORE | An electronic store powered by OSURC</title>
-<link rel="shortcut icon" type="image/png" href="img/safe/favicon.ico">
+<link rel="shortcut icon" type="image/png" href="../img/safe/favicon.ico">
 <meta name="description" content="ResiStore: an electroincs store powered by the Oregon State Robotics Club">
 <meta name="keywords" content="robotics, materials, oregon state, oregon state university, OSU, OSU engineering, 
 OSU computer science, electronics, electronics store, robotics store, OSURC, oregon state robotics club, 
