@@ -31,7 +31,7 @@
                         <?php
                             if(isset($_SESSION['id']) && $_SESSION['sudo'] != '1'){
                         ?>
-                        <li><a href="../sub_tools">Volunteer Resourses</a></li>
+                        <li><a href="../sub_tools">Volunteer Resources</a></li>
                         <?php
                             }
                             else if(isset($_SESSION['id']) && $_SESSION['sudo'] == '1'){

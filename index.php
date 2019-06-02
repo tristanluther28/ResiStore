@@ -20,7 +20,7 @@ function boolBanner() {
 }
 
 function setUpTimer() {
-  window.setInterval(boolBanner, 1000);
+  window.setInterval(boolBanner, 2000);
 }
 document.addEventListener('DOMContentLoaded', setUpTimer);
 </script>

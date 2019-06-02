@@ -41,7 +41,7 @@
                             <br><br>
                     <?php
                         }
-                        if(isset($_SESSION['id'])){
+                        //if(isset($_SESSION['id'])){ //Delete comment to make only volunteers see
                             if($row['box'] != NULL){
                     ?>
                         <p class="white">Box: <?php echo $row['box']?></p>
@@ -50,7 +50,7 @@
                     ?>
                         <p class="white">Location: <?php echo $row['location']?></p>
                     <?php
-                        }
+                        //}
                     ?>
                     <br>
                     <a href="<?php echo '../datasheets/'.$row['datasheet'];?>" target="_blank"><button type="button" class="btn btn-info btn-lg">View Datasheet</button></a>

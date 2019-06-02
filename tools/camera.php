@@ -27,9 +27,13 @@
                     <?php
                         if(isset($_SESSION['id']) && $_SESSION['sudo'] == '1'){
                     ?>
-                       <h1 class="alter">Pardon Our Dust...</h1>
-                       <hr>
-                       <h3 class="white">This feature is under construction</h3>
+                        <h1 class="alter">Camera 1</h1>
+                        <hr>
+                        <iframe src ="http://10.214.153.67" width="800" height="600">
+                        <br><br><br>
+                        <h1 class="alter">Camera 2</h1>
+                        <hr>
+                        <iframe src ="http://10.214.153.65" width="800" height="600">
                     <?php
                         }
                         else{

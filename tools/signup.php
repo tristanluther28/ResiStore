@@ -161,7 +161,7 @@
                                                 }
                                                 else if($i+8 > 12){
                                             ?>
-                                                <td class='text-left'><?php echo $i-3?>:00PM - <?php echo $i-2?>:00PM</td>
+                                                <td class='text-left'><?php echo $i-4?>:00PM - <?php echo $i-3?>:00PM</td>
                                             <?php
                                                 }
                                             ?>         

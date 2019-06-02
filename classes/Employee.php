@@ -29,6 +29,17 @@ class Employee extends Db {
             return $data;
         }
     }
+    //Check if rfid number exists
+    public function search_rfid($rfid){
+        $sql = "SELECT * FROM employees WHERE rfid='$rfid'";
+        $result = $this->connect()->query($sql);
+        if($result->rowCount() > 0){
+            while($row = $result->fetch()){
+                $data[] = $row;
+            }
+            return $data;
+        }
+    }
     //Check if login info is correct
     public function get_from_email($email){
         $sql = "SELECT id FROM employees WHERE email='$email'";
