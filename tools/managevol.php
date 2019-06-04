@@ -54,6 +54,8 @@
                 <br>
                 <p class="white">Email: <?php echo $row['email']?></p>
                 <br>
+                <p class="white">OSU ID: <?php echo $row['osu_id']?></p>
+                <br>
                 <p class="white">RFID: <?php echo $row['rfid']?></p>
                 <br>
                 <p class="white">Volunteer Since: 
@@ -66,6 +68,16 @@
                 <a class="btn btn-info" href="../tools/empDetail.php?id=<?php echo $row['id']?>">See Schedule</a>
                 <a class="btn btn-info" href="../tools/empSch.php?id=<?php echo $row['id']?>">Edit Schedule</a>
                 <?php
+                    if($row['store_access'] == 1){
+                ?>
+                    <a class="btn btn-danger" href="../tools/accessCng.php?id=<?php echo $row['id']?>&a=0">Disable Store Access</a>
+                <?php
+                    }
+                    else{
+                ?>
+                    <a class="btn btn-success" href="../tools/accessCng.php?id=<?php echo $row['id']?>&a=1">Grant Store Access</a>
+                <?php
+                    }
                     if($row['sudo'] != 1){
                 ?>
                 <a class="btn btn-danger" href="../tools/removeEmp.php?id=<?php echo $row['id']?>">Remove Volunteer</a>

@@ -62,6 +62,17 @@ class Employee extends Db {
         $sql = "UPDATE employees SET password='$hash', sp=NULL WHERE id='$id'";
         $this->connect()->query($sql);
     }
+    //Remove an employee access to the store
+    public function revoke_access($id){
+        $sql = "UPDATE employees SET store_access=0 WHERE id='$id'";
+        $this->connect()->query($sql);
+    }
+    //Give an employee access to the store
+    public function grant_access($id){
+        $sql = "UPDATE employees SET store_access=1 WHERE id='$id'";
+        $this->connect()->query($sql);
+    }
+    //Update Test
     public function update_test($id){
         $sql = "UPDATE employees SET rfid='420' WHERE id='$id'";
         $this->connect()->query($sql);

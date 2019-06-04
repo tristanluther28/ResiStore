@@ -86,6 +86,10 @@
         } 
     }
     else{
-        echo "Wanda...it's time.";
+        //Unauthorized User: Access Denied
+        //JSON data follows the following template: exists in database, first name, last name, has access
+        $data = array('known' => 'False', 'first' => $row['firstName'], 'last' => $row['lastName'], 'has_auth' => false);
+        echo (json_encode($data));
+        return json_encode($data);
     }
 ?>
