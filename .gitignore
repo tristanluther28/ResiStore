@@ -3,3 +3,6 @@ classes/Db.php
 sub_tools/troubleTicket.php
 sub_tools/troubleTicket.php
 login/forgotpass.php
+./phpmyadmin
+./php
+./phpmailer
