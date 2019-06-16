@@ -65,7 +65,8 @@
                         <h2 class="alter">Check Store Cameras</h2></a>
                     </div>
                     <div class="col-lg-4 text-center">
-                        
+                        <a href="../tools/doorView.php"><span class="glyphicon glyphicon-book"></span>
+                        <h2 class="alter">Door RFID Log</h2></a>
                     </div>
                     <div class="col-lg-4 text-center">
                         

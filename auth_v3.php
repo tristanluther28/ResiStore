@@ -17,8 +17,9 @@
     header('Content-Type: application/json');
 
     $employee = new Employee(); //New employee object (may change to member object)
+    $door = new Door(); //New door object for tracking of who enters where and when (Currently only applies for ResiStore)
 
-    $rfid_recieved = $_GET['rfid_number']; //Recieve RFID number via GET request
+    $rfid_recieved = $employee->escape($_GET['rfid_number']); //Recieve RFID number via GET request
     $access_name = $_GET['access_name']; //Recieve requested room via GET request (clab or store)
 
     $rows = $employee->search_rfid($rfid_recieved); //From the Employee (member) class called the function to see if they have an rfid number in the database
@@ -33,6 +34,7 @@
                 //JSON data follows the following template: exists in database, first name, last name, has access
                 $data = array('known' => 'True', 'first' => $row['firstName'], 'last' => $row['lastName'], 'has_auth' => true);
                 echo (json_encode($data));
+                $door->insert_data($row['firstName'], $row['lastName'], $rfid_recieved, 1);
                 return json_encode($data);
 
             }
@@ -42,6 +44,7 @@
                 //JSON data follows the following template: exists in database, first name, last name, has access
                 $data = array('known' => 'True', 'first' => $row['firstName'], 'last' => $row['lastName'], 'has_auth' => false);
                 echo (json_encode($data));
+                $door->insert_data($row['firstName'], $row['lastName'], $rfid_recieved, 0);
                 return json_encode($data);
             }
         }
@@ -51,6 +54,7 @@
             //JSON data follows the following template: exists in database, first name, last name, has access
             $data = array('known' => 'False', 'first' => $row['firstName'], 'last' => $row['lastName'], 'has_auth' => false);
             echo (json_encode($data));
+            $door->insert_data("Unknown", NULL, $rfid_recieved, 0);
             return json_encode($data);
         } 
     }
@@ -86,7 +90,7 @@
         } 
     }
     else{
-        //Unauthorized User: Access Denied
+        //Unauthorized User: Access Denied (No location specified...)
         //JSON data follows the following template: exists in database, first name, last name, has access
         $data = array('known' => 'False', 'first' => $row['firstName'], 'last' => $row['lastName'], 'has_auth' => false);
         echo (json_encode($data));
