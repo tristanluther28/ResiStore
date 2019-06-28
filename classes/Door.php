@@ -9,7 +9,12 @@ class Door extends Db {
     }
     //Insert a new door data
     public function insert_data($firstName, $lastName, $rfid, $successful){
-        $sql = "INSERT INTO door (firstName, lastName, rfid, successful) VALUES ('$firstName', '$lastName', '$rfid', '$successful')";
+        if($successful == 1){
+            $sql = "INSERT INTO door (firstName, lastName, rfid, successful) VALUES ('$firstName', '$lastName', '$rfid', 1)";
+        }
+        else{
+            $sql = "INSERT INTO door (firstName, lastName, rfid, successful) VALUES ('$firstName', '$lastName', '$rfid', 0)";
+        }
         $this->connect()->query($sql);
     }
     //Get it all!

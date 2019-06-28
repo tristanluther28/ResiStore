@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', setUpTimer);
                 <br><br><br>
                 <div class="col-md-6 col-md-offset-3 text-center">
                 <a name="avalibility"></a>   
-                    <img class="img-responsive-middle" src="./img/safe/logo-inverse.png" alt="ResiStore!">
+                    <img class="img-responsive-middle" height="115" width="380" src="./img/safe/logo-inverse.png" alt="ResiStore!">
                     <hr>
                     <h3 class="white">An electronics store powered by the</h3>
                     <a href="https://www.osurobotics.club/"><img class="img-responsive-middle" height="101" width="300" src="/img/safe/logo-osurc-inverse.png" alt="OSURC!"></a>
