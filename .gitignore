@@ -1,8 +1,9 @@
 
 classes/Db.php
 sub_tools/troubleTicket.php
-sub_tools/troubleTicket.php
 login/forgotpass.php
-./phpmyadmin
-./php
-./phpmailer
+phpmyadmin/*
+php/*
+phpmailer/*
+connect-php-sdk/*
+tools/inventorySync.php

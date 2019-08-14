@@ -150,11 +150,34 @@ class Product extends Db {
             return $data;
         }
     }
+    //Get data for square check
+    public function get_square_data(){
+        $sql = "SELECT id, qty, sold, square_token FROM products";
+        $result = $this->connect()->query($sql);
+        if($result->rowCount() > 0){
+            while($row = $result->fetch()){
+                $data[] = $row;
+            }
+            return $data;
+        }
+    }
     //Update a product
     public function update($id, $plu, $description, $qty, $price, $category, $picture, $datasheet, $box, $location){
         $sql = "UPDATE products SET plu='$plu', description='$description', qty='$qty', 
         price='$price', category='$category', picture='$picture', datasheet='$datasheet', box='$box', location='$location' 
         WHERE id='$id'"; 
+        $this->connect()->query($sql);
+    }
+    //Update quantity based on value from square report
+    public function update_qty_square($id, $square_token, $qty){
+        $sql = "UPDATE products SET qty='$qty'
+        WHERE id='$id' AND square_token='$square_token'"; 
+        $this->connect()->query($sql);
+    }
+    //Update sold based on a square report
+    public function update_sold_square($id, $square_token, $sold){
+        $sql = "UPDATE products SET sold='$sold'
+        WHERE id='$id' AND square_token='$square_token'"; 
         $this->connect()->query($sql);
     }
     //Update a product based on POS report

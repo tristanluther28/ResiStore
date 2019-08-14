@@ -14,7 +14,7 @@
         <?php
             if(isset($_SESSION['id']) && $_SESSION['sudo'] == '1'){
                 if (isset($_POST['submit'])){
-                    $door = new door();
+                    $door = new Door();
                     $door->delete();
                     header("Location: doorView.php");
                     exit();

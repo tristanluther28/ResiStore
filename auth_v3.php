@@ -14,17 +14,19 @@
         require_once "../resi.store/classes/$class.php";
     }
 
+    date_default_timezone_set("America/Los_Angeles");
+
     header('Content-Type: application/json');
 
-    $employee = new Employee(); //New employee object (may change to member object)
+    $employee = new Employee(); //New employee object for ResiStore
+    $member = new Member(); //New member object for Clab
     $door = new Door(); //New door object for tracking of who enters where and when (Currently only applies for ResiStore)
 
     $rfid_recieved = $employee->escape($_GET['rfid_number']); //Recieve RFID number via GET request
     $access_name = $_GET['access_name']; //Recieve requested room via GET request (clab or store)
 
-    $rows = $employee->search_rfid($rfid_recieved); //From the Employee (member) class called the function to see if they have an rfid number in the database
-
     if($access_name == 'club_store'){ //The string 'club_store' was determined by the particle script to determine what is being accessed (more locations can be added in the future)
+        $rows = $employee->search_rfid($rfid_recieved); //From the Employee (member) class called the function to see if they have an rfid number in the database
         //Check if returned value is not NULL
         if($rows != NULL){
             //Access Granted
@@ -59,6 +61,7 @@
         } 
     }
     else if($access_name == 'clab'){ //The string 'clab' was determined by the particle script to determine what is being accessed (more locations can be added in the future)
+        $rows = $member->search_rfid($rfid_recieved); //From the Employee (member) class called the function to see if they have an rfid number in the database
         //Check if returned value is not NULL
         if($rows != NULL){
             //Access Granted
