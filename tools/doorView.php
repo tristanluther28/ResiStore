@@ -59,6 +59,7 @@
                         <tr>
                             <td><?php 
                             $date = date_create($row['date']);
+                            date_sub($date, date_interval_create_from_date_string('7 hours'));
                             echo date_format($date,"m/d/Y h:iA");
                             ?></td>
                             <td><?php echo $row['firstName'] ?></td>

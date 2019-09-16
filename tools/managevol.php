@@ -35,61 +35,69 @@
                 $employee = new Employee();
                 $rows = $employee->select();
                 if($rows != NULL){
+
+                    ?>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>OSU ID</th>
+                            <th>RFID Number</th>
+                            <th>Volunteer Since</th>
+                            <th>Edit Schedule</th>
+                            <th>Store Access</th>
+                            <th>Remove?</th>
+                        </tr>
+                    </thead>
+                <?php
                     foreach($rows as $row){
                 ?>
-            <div class="row mt centered">
-                <h3 class="white"><?php echo $row['firstName'] ?> <?php echo $row['lastName']?>: 
-                <?php
-                    if($row['sudo'] == 1){
-                ?>
-                <i class="white">Manager</i></h3>
-                <?php
-                    }
-                    else{
-                ?>
-                <i class="white">Volunteer</i></h3>
-                <?php
-                    }
-                ?>
-                <br>
-                <p class="white">Email: <?php echo $row['email']?></p>
-                <br>
-                <p class="white">OSU ID: <?php echo $row['osu_id']?></p>
-                <br>
-                <p class="white">RFID: <?php echo $row['rfid']?></p>
-                <br>
-                <p class="white">Volunteer Since: 
-                <?php 
-                    $date = date_create($row['dateMade']);
-                    echo date_format($date,"m/d/Y")
-                ?>
-                </p>
-                <br>
-                <a class="btn btn-info" href="../tools/empDetail.php?id=<?php echo $row['id']?>">See Schedule</a>
-                <a class="btn btn-info" href="../tools/empSch.php?id=<?php echo $row['id']?>">Edit Schedule</a>
-                <?php
-                    if($row['store_access'] == 1){
-                ?>
-                    <a class="btn btn-danger" href="../tools/accessCng.php?id=<?php echo $row['id']?>&a=0">Disable Store Access</a>
-                <?php
-                    }
-                    else{
-                ?>
-                    <a class="btn btn-success" href="../tools/accessCng.php?id=<?php echo $row['id']?>&a=1">Grant Store Access</a>
-                <?php
-                    }
-                    if($row['sudo'] != 1){
-                ?>
-                <a class="btn btn-danger" href="../tools/removeEmp.php?id=<?php echo $row['id']?>">Remove Volunteer</a>
+                <tbody>
+                        <tr>
+                            <td><?php echo $row['firstName']. " " .$row['lastName'] ?></td>
+                            <td><?php echo $row['email'] ?></td>
+                            <td><?php echo $row['osu_id'] ?></td>
+                            <td><?php echo $row['rfid'] ?></td>
+                            <td><?php 
+                            $date = date_create($row['dateMade']);
+                            echo date_format($date,"m/d/Y") 
+                            ?></td>
+                            <td>
+                            <a class="btn btn-info" href="../tools/empSch.php?id=<?php echo $row['id']?>">Edit Schedule</a>
+                            </td>
+                            <td>
+                            <?php
+                                if($row['store_access'] == 1){
+                            ?>
+                                <a class="btn btn-danger" href="../tools/accessCng.php?id=<?php echo $row['id']?>&a=0">Disable Store Access</a>
+                            <?php
+                                }
+                                else{
+                            ?>
+                                <a class="btn btn-success" href="../tools/accessCng.php?id=<?php echo $row['id']?>&a=1">Grant Store Access</a>
+                            <?php
+                                }
+                            ?>
+                            </td>
+                            <td>
+                            <?php
+                                if($row['sudo'] != 1){
+                            ?>
+                            <a class="btn btn-danger" href="../tools/removeEmp.php?id=<?php echo $row['id']?>">Remove Volunteer</a>
+                            <?php
+                                }
+                            ?>
+                            </td>
+                        </tr>
                 <?php
                     }
                 ?>
-                <hr>
-                </div>
+                    </tbody>
+                </table>    
                 <?php
                     }
                 }
-            }
             else{
                 header("Location: ../404.php");
                 exit();

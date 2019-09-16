@@ -22,23 +22,23 @@ class Product extends Db {
     //Get it all!
     public function search_all($input){
         $input = $this->escape($input);
+        /*
         $sql = "SELECT id, plu, description, qty, price, category, picture, datasheet, box, location FROM products
-        WHERE description LIKE '%$input%' OR category LIKE '%$input%' OR price LIKE '%$input%' 
-        OR plu LIKE '%$input%'";
+        WHERE description LIKE '%$input%' OR category LIKE '%$input%' OR price LIKE '%$input%' OR plu LIKE '%$input%' OR thesaurus LIKE '%$input%'";
         $result = $this->connect()->query($sql); //Look for result of entire term
         while($row = $result->fetch()){
             $data[] = $row;
-        }
+        }*/
         $sep_input = explode(" ", $input);
         foreach($sep_input as $piece){
             $sql = "SELECT id, plu, description, qty, price, category, picture, datasheet, box, location FROM products
-            WHERE description LIKE '%$piece%' OR category LIKE '%$piece%'";
+            WHERE description LIKE '%$piece%' OR category LIKE '%$piece%' OR price LIKE '%$piece%' OR plu LIKE '%$piece%' OR thesaurus LIKE '%$piece%'";
             $result = $this->connect()->query($sql); //Then look for individual terms results
             while($row = $result->fetch()){
                 $data[] = $row;
             }
             if($result->rowCount() > 0){
-                $data = array_intersect_key($data, array_unique(array_map('serialize', $data))); //Remove Duplicate Values in the Array
+                $data = array_unique($data, SORT_REGULAR); //Remove Duplicate Values in the Array
                 return $data;
             }
         }
@@ -59,7 +59,7 @@ class Product extends Db {
     public function search_name($input){
         $input = $this->escape($input);
         $sql = "SELECT id, plu, description, qty, price, category, picture, datasheet, box, location FROM products
-        WHERE description LIKE '%$input%' OR category LIKE '%$input%'";
+        WHERE description LIKE '%$input%' OR category LIKE '%$input%' OR thesaurus LIKE '%$input%'";
         $result = $this->connect()->query($sql); //Look for entire term results 
         while($row = $result->fetch()){
             $data[] = $row;
@@ -67,7 +67,7 @@ class Product extends Db {
         $sep_input = explode(" ", $input);
         foreach($sep_input as $piece){
             $sql = "SELECT id, plu, description, qty, price, category, picture, datasheet, box, location FROM products
-            WHERE description LIKE '%$piece%' OR category LIKE '%$piece%'";
+            WHERE description LIKE '%$piece%' OR category LIKE '%$piece%' OR thesaurus LIKE '%$piece%'";
             $result = $this->connect()->query($sql); //Then look for individual terms results
             if($result->rowCount() > 0){
                 while($row = $result->fetch()){

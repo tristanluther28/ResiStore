@@ -29,11 +29,13 @@
                     ?>
                         <h1 class="alter">Camera 1</h1>
                         <hr>
-                        <iframe src ="http://10.214.153.67" width="800" height="600">
+                        <iframe src ="http://128.193.8.102" width="800" height="600">
                         <br><br><br>
+                        <!--
                         <h1 class="alter">Camera 2</h1>
                         <hr>
                         <iframe src ="http://10.214.153.65" width="800" height="600">
+                        -->
                     <?php
                         }
                         else{

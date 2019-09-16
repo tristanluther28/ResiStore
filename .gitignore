@@ -1,7 +1,9 @@
-
+classes/TekDb.php
+classes/TekProduct.php
 classes/Db.php
 sub_tools/troubleTicket.php
 login/forgotpass.php
+tools/camera.php
 phpmyadmin/*
 php/*
 phpmailer/*
