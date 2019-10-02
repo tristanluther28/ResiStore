@@ -1,4 +1,5 @@
 <?php
+    $level = '../';
     function __autoload($class){
         require_once "../classes/$class.php";
     }
@@ -41,7 +42,7 @@
                     $str = "qpownfgsaifr84h2f9hb331gGGFH8gbfHGDGTRGdUYfytrdytrYTF";
                     $str = str_shuffle($str);
                     $str = substr($str, 0, 10);
-                    $url = "http://localhost/login/resetpass.php?sp=$str&email=$email"; //MUST CHANGE WHEN A DOMAIN IS ESTABLISHED
+                    $url = "http://resi.store/login/resetpass.php?sp=$str&email=$email"; //MUST CHANGE WHEN A DOMAIN IS ESTABLISHED
                     $mail->Body = "\nTo reset your ResiStore password, follow this link: $url";
                     $mail->setFrom('resiStore.bot@gmail.com', 'ResiStore Bot');
                     $mail->addAddress($email);

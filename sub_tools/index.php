@@ -1,4 +1,5 @@
 <?php
+    $level = '../';
     function __autoload($class){
         require_once "../classes/$class.php";
     }
@@ -26,10 +27,21 @@
                 <div class="text-center">
                     <?php
                         if(isset($_SESSION['id'])){
+                            if($_SESSION['sudo'] == '2'){
+                    ?>
+                        <h1 class="alter">Officer Resources</h1>
+                        <hr>
+                    </div>
+                    <?php
+                            }
+                            else{
                     ?>
                         <h1 class="alter">Volunteer Resources</h1>
                         <hr>
                     </div>
+                    <?php
+                            }
+                    ?>
                     <div class="col-lg-4 text-center">
                         <a href="../sub_tools/editHours.php"><span class="glyphicon glyphicon-time"></span>
                         <h2 class="alter">Change My Hours</h2></a>
@@ -38,6 +50,16 @@
                         <a href="../sub_tools/troubleTicket.php"><span class="glyphicon glyphicon-send"></span>
                         <h2 class="alter">Submit Trouble Ticket</h2></a>
                     </div>
+                    <?php
+                        if($_SESSION['sudo'] == '2'){
+                    ?>
+                    <div class="col-lg-4 text-center">
+                        <a href="../sub_tools/signup_osurc.php"><span class="glyphicon glyphicon-save-file"></span>
+                        <h2 class="alter">Register Club Member</h2></a>
+                    </div>
+                    <?php
+                        }
+                    ?>
                 </div>
                 <br><br>
                 

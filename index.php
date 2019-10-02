@@ -27,6 +27,7 @@ document.addEventListener('DOMContentLoaded', setUpTimer);
 
 
 <?php
+    $level = '';
     function __autoload($class){
         require_once "./classes/$class.php";
     }
@@ -50,7 +51,7 @@ document.addEventListener('DOMContentLoaded', setUpTimer);
                     <img class="img-responsive-middle mobile-logo" src="./img/safe/logo-inverse.png" alt="ResiStore!">
                     <hr>
                     <h3 class="white">An electronics store powered by the</h3>
-                    <a href="https://www.osurobotics.club/"><img class="img-responsive-middle" height="101" width="300" src="/img/safe/logo-osurc-inverse.png" alt="OSURC!"></a>
+                    <a href="https://www.osurobotics.club/"><img class="img-responsive-middle" height="101" width="300" src="./img/safe/logo-osurc-inverse.png" alt="OSURC!"></a>
                     <div class="avalibility-banner1" id="closed">
                         <h3 class="white">The store is currently
                         <?php
@@ -85,7 +86,7 @@ document.addEventListener('DOMContentLoaded', setUpTimer);
                         if($row['qty']!=0){
                 ?>
                 <div class="col-lg-3" >
-                    <a href="inventory/item.php?plu=<?php echo $row['plu']?>"><img class="img-responsive" src="<?php echo '../img/'.$row['picture'];?>" alt="ResiStore!"></a>
+                    <a href="./inventory/item.php?plu=<?php echo $row['plu']?>"><img class="img-responsive" src="<?php echo './img/'.$row['picture'];?>" alt="ResiStore!"></a>
                     <h3 class="text-center alter"><?php echo $row['description'] ?></h3>
                 </div>
                 <?php
@@ -119,7 +120,7 @@ document.addEventListener('DOMContentLoaded', setUpTimer);
                         <br>Check out the inventory page for the full list of items.<br>
                     </p>
                     <div class="text-center">
-                        <a href="/inventory" class="btn btn-info pull-center">Full Inventory</a>
+                        <a href="./inventory" class="btn btn-info pull-center">Full Inventory</a>
                     </div>
                 </div>
                 <div class="col-md-4">

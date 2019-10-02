@@ -1,4 +1,5 @@
 <?php
+    $level = '../';
     function __autoload($class){
         require_once "../classes/$class.php";
     }
@@ -44,7 +45,7 @@
                     You can reserve a spot for training from an email sent out by the manager at the beginning 
                     of the term. 
                     <br><br>However, if the term is in progress and you would like to begin volunteering 
-                    now, you can email the store manager at OSURCstore@oregonstate.edu to see if a shift is avaliable.
+                    now, you can email the store manager at resistore-owner@oregonstate.edu to see if a shift is avaliable.
                     <br><br>
                     <p class="white">Already a Volunteer? <a href="../login">Login here</a>.</p>
                     </p>

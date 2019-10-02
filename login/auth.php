@@ -1,4 +1,5 @@
 <?php
+    $level = '../';
     function __autoload($class){
         require_once "../classes/$class.php";
     }
@@ -28,6 +29,7 @@
                         $_SESSION['firstName'] = $data['firstName'];
                         $_SESSION['lastName'] = $data['lastName'];
                         $_SESSION['sudo'] = $data['sudo'];
+                        $_SESSION['name'] = $data['firstName'] . " " . $data['lastName'];
                         $_SESSION['last_login_time'] = time();
                         header("Location: ../index.php");
                         exit();

@@ -1,4 +1,5 @@
 <?php
+    $level = '../';
     function __autoload($class){
         require_once "../classes/$class.php";
     }
@@ -69,7 +70,8 @@
                         <h2 class="alter">Door RFID Log</h2></a>
                     </div>
                     <div class="col-lg-4 text-center">
-                        
+                        <a href="../sub_tools/signup_osurc.php"><span class="glyphicon glyphicon-save-file"></span>
+                        <h2 class="alter">Register Club Member</h2></a>
                     </div>
                 </div>
                     <?php

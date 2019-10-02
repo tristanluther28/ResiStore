@@ -1,4 +1,5 @@
 <?php
+    $level = '../';
     session_start();
     include_once('../classes/Db.php');
     include_once('../classes/Product.php');

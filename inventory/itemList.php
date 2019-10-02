@@ -1,4 +1,5 @@
 <?php
+    $level = '../';
     function __autoload($class){
         require_once "../classes/$class.php";
     }
@@ -145,6 +146,7 @@
                     <div class="col-md-4 center-linked">
                         <p class="list-linked">
                         <?php
+                        if($total_pages != 0){
                             if($page > 1 and isset($_GET['cate'])){
                             ?>
                                 <a href='itemList.php?cate=<?php echo $_GET["cate"] ?>&page=<?php echo $page-1 ?>'><button type="button" class="btn btn-info"><</button></a>
@@ -201,6 +203,7 @@
                                 <a href='itemList.php?page=<?php echo $page+1 ?>'><button type="button" class="btn btn-info">></button></a>
                             <?php
                             }
+                        }
                         ?>
                         </p>
                         <div class='pad'></div>

@@ -1,4 +1,4 @@
 <?php
-    header("Location: ../404.php");
+    header("Location: info.php");
     exit();
 ?>
