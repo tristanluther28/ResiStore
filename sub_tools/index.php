@@ -57,6 +57,17 @@
                         <a href="../sub_tools/signup_osurc.php"><span class="glyphicon glyphicon-save-file"></span>
                         <h2 class="alter">Register Club Member</h2></a>
                     </div>
+                </div>
+                <br><br>
+                <div class="text-center">
+                    <div class="col-lg-4 text-center">
+                        <a href="../sub_tools/edit_osurc.php"><span class="glyphicon glyphicon-edit"></span>
+                        <h2 class="alter">Edit Club Members</h2></a>
+                    </div>
+                    <div class="col-lg-4 text-center">
+                        <a href="../sub_tools/resign_osurc.php"><span class="glyphicon glyphicon-king"></span>
+                        <h2 class="alter">Choose Successor</h2></a>
+                    </div>
                     <?php
                         }
                     ?>

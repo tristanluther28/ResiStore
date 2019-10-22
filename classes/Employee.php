@@ -110,6 +110,13 @@ class Employee extends Db {
         $sql = "UPDATE employees SET sudo=NULL WHERE id='$id_curr'";
         $this->connect()->query($sql);
     }
+    //Make a different volunteer an officer
+        public function transfer_officer($id_next, $id_curr){
+            $sql = "UPDATE employees SET sudo='2' WHERE id='$id_next'";
+            $this->connect()->query($sql);
+            $sql = "UPDATE employees SET sudo=NULL WHERE id='$id_curr'";
+            $this->connect()->query($sql);
+        }
     //Get the hours!
     public function get_blocks(){
         $sql = "SELECT blocks FROM employees";

@@ -31,8 +31,44 @@
                     $member->insert_data($firstName, $lastName, $osuid, $email, $rfid, $interests, $major, $standing, $option, $_SESSION['name']);
                     $pos_msg = "You have been registered!";
                     if($_SESSION['sudo'] != '1'){
-                        header("Location: index.php");
-                        exit();
+                        ?>
+                        <div class="container pt">
+                            <div class="row mt centered">
+                                <div class="col-lg-8 col-md-8 col-sm-8">
+                                <div class="">
+                                    <h2 class="white">Would you like to register another member?</h2>
+                                    <div class="input-group-btn">
+                                        <a href="signup_osurc.php"><button type="" class="btn-lg btn-success">Yes</button></a>
+                                        <a href="index.php"><button type="" class="btn-lg btn-danger">No</button></a>
+                                    </div>
+                                </div>
+                                <br>
+                                <?php
+                                if($error_msg != ""){
+                                ?>
+                                <h4 class="error-msg">
+                                <?php
+                                    echo $error_msg; 
+                                ?>
+                                </h4>
+                                <?php
+                                }
+                                ?>
+                                <?php
+                                if($pos_msg != ""){
+                                ?>
+                                <h4 class="pos-msg">
+                                <?php
+                                    echo $pos_msg; 
+                                ?>
+                                </h4>
+                                <?php
+                                }
+                                ?>
+                            </div>
+                        </div>
+                    </div>
+                        <?php
                     }
                     else{
                         header("Location: ../tools/index.php");
@@ -45,39 +81,8 @@
                 exit();
             }
         ?>
-<div class="container pt">
-    <div class="row mt centered">
-        <div class="col-lg-3 col-md-4 col-sm-5">
-            <br>
-            <?php
-            if($error_msg != ""){
-            ?>
-            <h4 class="error-msg">
-            <?php
-                echo $error_msg; 
-            ?>
-            </h4>
-            <?php
-            }
-            ?>
-            <?php
-            if($pos_msg != ""){
-            ?>
-            <h4 class="pos-msg">
-            <?php
-                echo $pos_msg; 
-            ?>
-            </h4>
-            <?php
-            }
-            ?>
-        </div>
-    </div>
-</div>
-
 <?php
     require_once "../support/footer.php";
 ?>
 </body>
 </html>
-?>
